@@ -11,6 +11,3 @@ Choosing which LLMs to use depends on how much you choose to focus on ethics. Fo
 
 # Lectures and Labs
 Go to the [wiki](https://github.com/joecupano/sovereign-ai-course/wiki)
-
-- `/opt/sovereign-ai-lab/rag`
-
