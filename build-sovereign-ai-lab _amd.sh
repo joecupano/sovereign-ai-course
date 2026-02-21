@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #
-# build-sovereign-ai-lab.sh
+# build-sovereign-ai-lab_amd.sh
 #
 # This script is designed to set up a lab environment for running
 # large language models (LLMs) using Ollama on an Ubuntu system. 
@@ -15,7 +15,7 @@ BANNER_RESET="\e[0m"
 
 echo " "
 echo -e "${INSTALL_COLOR}"
-echo -e "${INSTALL_COLOR} Build Sovereign AI Lab (NVIDIA GPU)"
+echo -e "${INSTALL_COLOR} Build Sovereign AI Lab (AMD GPU)"
 echo -e "${INSTALL_COLOR}"
 echo -e "${BANNER_RESET}"
 echo " "
@@ -26,8 +26,8 @@ Given a fresh Ubuntu 24.04 install, this script sets up the Sovereign AI Lab
 environment performing the following in order:
 
 1. Update Repositories
-2. Install Ubuntu Drivers
-3. Install NVIDIA Drivers and Utilities
+2. Add AMD Repository
+3. Install AMD Driver and ROCm Utility
 4. Install Build Utilities
 5. Install Python Environment and Development Utilities
 6. Install Ollama
@@ -49,20 +49,26 @@ echo -e "${BANNER_RESET}"
 echo " "
 sudo apt update && sudo apt upgrade -y
 echo " "
-echo -e "${INSTALL_COLOR}"
-echo -e "${INSTALL_COLOR} 2, Install Ubuntu Drivers"
-echo -e "${INSTALL_COLOR}"
-echo -e "${BANNER_RESET}"
-echo " "
-sudo ubuntu-drivers autoinstall
+
 echo " "
 echo -e "${INSTALL_COLOR}"
-echo -e "${INSTALL_COLOR} 3. Install NVIDIA Drivers and Utilities"
+echo -e "${INSTALL_COLOR} 2. Add AMD Repository"
 echo -e "${INSTALL_COLOR}"
 echo -e "${BANNER_RESET}"
 echo " "
-sudo apt install nvidia-utils-565-server nvtop btop -y
-echo " "
+sudo apt install wget gpg -y
+wget -qO - https://repo.radeon.com/rocm/rocm.gpg.key
+sudo gpg --dearmor -o /etc/apt/keyrings/rocm.gpg
+echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/rocm.gpg] https://repo.radeon.com/rocm/apt/6.0/ jammy main"
+sudo tee /etc/apt/sources.list.d/rocm.list
+
+echo -e "${INSTALL_COLOR}"
+echo -e "${INSTALL_COLOR} 3. Install AMD Driver and ROCm Utility"
+echo -e "${INSTALL_COLOR}"
+echo -e "${BANNER_RESET}"
+sudo apt update
+sudo apt install fglrx-core rocm-hip-sdk -y
+
 echo -e "${INSTALL_COLOR}"
 echo -e "${INSTALL_COLOR} 4. Install Build Utilities"
 echo -e "${INSTALL_COLOR}"
