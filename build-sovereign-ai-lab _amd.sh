@@ -68,6 +68,8 @@ echo -e "${INSTALL_COLOR}"
 echo -e "${BANNER_RESET}"
 sudo apt update
 sudo apt install fglrx-core rocm-hip-sdk -y
+sudo usermod -aG video \$USER
+sudo usermod -aG render \$USER
 
 echo -e "${INSTALL_COLOR}"
 echo -e "${INSTALL_COLOR} 4. Install Build Utilities"
