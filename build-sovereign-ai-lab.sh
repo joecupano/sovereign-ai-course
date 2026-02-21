@@ -9,40 +9,78 @@
 # 20210220 - 2300
 #
 
+BANNER_COLOR="\e[0;104m\e[K"   # blue
+BANNER_RESET="\e[0m"
+
+
 cat <<'EOF'
 
 With Ubuntu fresh install, this script sets up the environment performing
 the following in order:
 
-1. Update Repositories, Install Drivers, and Build Utilities
-2. Install Python Environment and Development Utilities
-3. Install Ollama
-4. Pull an LLM (IBM Granite 3.3 8B)
+1. Update Repositories
+2. Install Ubuntu Drivers
+3. Install NVIDIA Drivers and Utilities
+4. Install Build Utilities
+5. Install Python Environment and Development Utilities
+6. Install Ollama
+7. Pull an LLM (IBM Granite 3.3 8B)
 
 Starting ...
 EOF
+
 echo " "
-echo "1. Update Repositories, Install Drivers, and Build Utilities"
+echo -e "${BANNER_COLOR}"
+echo -e "${BANNER_COLOR} 1. Update Repositories"
+echo -e "${BANNER_COLOR}"
+echo -e "${BANNER_RESET}"
 echo " "
 sudo apt update && sudo apt upgrade -y
+echo " "
+echo -e "${BANNER_COLOR}"
+echo -e "${BANNER_COLOR} 2, Install Ubuntu Drivers"
+echo -e "${BANNER_COLOR}"
+echo -e "${BANNER_RESET}"
+echo " "
 sudo ubuntu-drivers autoinstall
+echo " "
+echo -e "${BANNER_COLOR}"
+echo -e "${BANNER_COLOR} 3. Install NVIDIA Drivers and Utilities$"
+echo -e "${BANNER_COLOR}"
+echo -e "${BANNER_RESET}"
+echo " "
 sudo apt install nvidia-utils-565-server nvtop btop -y
+echo " "
+echo -e "${BANNER_COLOR}"
+echo -e "${BANNER_COLOR} 4. Install Build Utilities"
+echo -e "${BANNER_COLOR}"
+echo -e "${BANNER_RESET}"
+echo " "
 sudo apt install build-essential git gcc cmake curl -y
 
 echo " "
-echo "2. Install Python Environment and Development Utilities"
+echo -e "${BANNER_COLOR}"
+echo -e "${BANNER_COLOR} 5. Install Python Environment and Development Utilities$"
+echo -e "${BANNER_COLOR}"
+echo -e "${BANNER_RESET}"   
 echo " "
 sudo apt install python3-pip python3-venv python3-dev -y
 
 echo " "
-echo "3. Install Ollama"
+echo -e "${BANNER_COLOR}"
+echo -e "${BANNER_COLOR} 6. Install Ollama$"
+echo -e "${BANNER_COLOR}"
+echo -e "${BANNER_RESET}"
 echo " "
 curl -fsSL https://ollama.com/install.sh | sh
 
 #systemctl status ollama
 
 echo " "
-echo "4. Pull an LLM (IBM Granite 3.3 8B)"
+echo -e "${BANNER_COLOR}"
+echo -e "${BANNER_COLOR} 7. Pull an LLM (IBM Granite 3.3 8B)$"
+echo -e "${BANNER_COLOR}"
+echo -e "${BANNER_RESET}"   
 echo " "
 ollama pull granite3.3:8b
 
