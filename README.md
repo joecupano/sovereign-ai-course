@@ -10,4 +10,4 @@ The technology stack referenced in the labs includes a **Dell Precision 3620** w
 Choosing which LLMs to use depends on how much you choose to focus on ethics. For a curriculum focused on the "AI Stack and Supply Chain," you want models that provide a paper trail for their data and training. The LLM you choose for the lab will be addressed in the relevant curriculum section.
 
 # Lectures and Labs
-Go to the [wiki](https://github.com/joecupano/sovereign-ai-cours.wiki)
+Go to the [wiki](https://github.com/joecupano/sovereign-ai-course.wiki)
