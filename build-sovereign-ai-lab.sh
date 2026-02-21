@@ -20,7 +20,7 @@ sudo apt install python3-pip python3-venv python3-dev -y
 #sudo reboot
 
 # 3. Install Ollama
-curl -fsSL https://ollama.com/install.sh \| sh
+curl -fsSL https://ollama.com/install.sh | sh
 
 # 4. Verify Installation
 #systemctl status ollama
